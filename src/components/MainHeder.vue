@@ -13,10 +13,10 @@
   </template>
   <script>
   export default {
-    name: "MainHeder",
-    props: {
-      msg: String,
-    },
+    // name: "MainHeder",
+    // props: {
+    //   msg: String,
+    // },
   };
   </script>
   

@@ -31,10 +31,10 @@
                     </div>
                     <div class="col">
                         <label for="pages"> מספר עמודים (לספר 1) </label>
-                        <input type="number"  id="pages" v-model="userData.info.pagesSelct" />
+                        <input type="number" id="pages" v-model="userData.info.pagesSelct" />
                     </div>
                 </div>
-                <div class="row g-3">
+                <div class="row g-3 ">
                     <div class="col">
                         <label for="profit"> רווח משוער </label>
                         <input type="number" id="profit" v-model="userData.info.profitSelct" />
@@ -46,15 +46,21 @@
                     </div>
                 </div>
                 <div class="row justify-content-md-center">
-                    <div class="col-md-3">
-                        <label for="speed">כמב עמודים אתה כותב בשעה?</label>
+                    <div class="col-md-5">
+                        <label for="speed">כמה עמודים אתה כותב בשעה?</label>
                         <input type="number" id="speed" required v-model="userData.info.speedSelct" />
                     </div>
 
-                    <div class="col-md-3">
-                        <label for="workInTzom"> עבודה בצומות</label>
-                        <input type="checkbox" id="workInTzom" v-model="userData.info.workInTzom" />
+                    <div class="col-md-3 form-check form-switch">
+                        <br>
+                        <label for="workInTzom" class="form-check-label"> עבודה בצומות</label>
+
+                     
+                        <input type="checkbox" role="switch" id="workInTzom" class="form-check-input"
+                            v-model="userData.info.workInTzom" />
+                            
                     </div>
+                  
 
 
                     <!-- הזנת ימי עבודה בשבוע -->
@@ -63,7 +69,7 @@
                         <h3>ימי עבודה בשבוע</h3>
                         <div class="row justify-content-md-center">
                             <div class="col-md-auto">
-                                <input type="checkbox" id="workDay1" name="workDays" value="sunday"
+                                <input type="checkbox" id="workDay1" name="workDays" value="sunday" checked
                                     v-model="userData.workDays" />
                                 <label for="workDay1">יום ראשון</label>
                             </div>
@@ -104,7 +110,7 @@
                 </div>
             </fieldset>
         </form>
-        <button @click="startCalculator">חזור לשלב קודם</button>
+        <button @click="$emit('clickBack')">חזור לשלב קודם</button>
         <button @click="submitScreen2">סיים וחשב</button>
     </div>
     <!-- מסך טעינה -->
@@ -126,14 +132,19 @@
             {{ calculatData.holidayList }}
         </ul>
         <button @click="startCalculator">חישוב חדש</button>
+        <button @click="startCalculator">חישוב חדש</button>
     </div>
 </template>
 <script>
 import DotLoader from "./DotLoader.vue";
+
 export default {
     components: {
         DotLoader: DotLoader,
-      
+
+    },
+    defineProps: {
+        funcBack: Function
     },
     data() {
         return {
@@ -181,8 +192,8 @@ export default {
     methods: {
         // איפוס המחשבון
         startCalculator() {
-      location.reload()
-    },
+            location.reload()
+        },
         //מעבר לביצוע פעולות החישוב
         submitScreen2() {
             this.showScreen2 = !this.showScreen2;
@@ -332,7 +343,7 @@ export default {
                 if (holidayIn > 0) {
                     this.updateWorkDay()
                 }
-              
+
             }
 
             else {
@@ -359,14 +370,14 @@ export default {
 
         },
 
-        async DeadLinStr(){
-           let DeadLinStr = this.fixFormat(this.calculatData.EndDateTemp)
-           let dateStr = new Date(DeadLinStr)
-           let response = await fetch(
+        async DeadLinStr() {
+            let DeadLinStr = this.fixFormat(this.calculatData.EndDateTemp)
+            let dateStr = new Date(DeadLinStr)
+            let response = await fetch(
                 `https://www.hebcal.com/converter?cfg=json&date=${DeadLinStr}&g2h=1&strict=1`
             )
             let dayData = await response.json()
-           this.calculatData.DeadLinStr = `${dayData.hebrew}  ${dateStr.toLocaleDateString("en-GB")}`
+            this.calculatData.DeadLinStr = `${dayData.hebrew}  ${dateStr.toLocaleDateString("en-GB")}`
         },
 
         //חישוב רווח משוער ליום עבודה
