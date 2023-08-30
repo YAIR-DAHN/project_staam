@@ -1,19 +1,15 @@
 <template>
 
-<div>
+<div >
 <img src="http://www.or-lasofer.com/12231_348.jpg" alt="מודעה חשב סופר">
 </div>
-<div>
+<div class="mt-3">
 <img src="http://www.or-lasofer.com/12231_311.jpg" alt="מודעה קולמוס קרמי">
 </div>
 
   </template>
   
-  <script >
- 
-
-    
-  
+  <script > 
   </script>
 
   

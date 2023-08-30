@@ -40,7 +40,6 @@
                         <input type="number" id="profit" v-model="userData.info.profitSelct" />
                     </div>
                     <div class="col">
-
                         <label for="workHours">שעות עבודה ליום </label>
                         <input type="number" id="workHours" min="0" max="24" v-model="userData.info.workHoursSelct" />
                     </div>
@@ -50,22 +49,18 @@
                         <label for="speed">כמה עמודים אתה כותב בשעה?</label>
                         <input type="number" id="speed" required v-model="userData.info.speedSelct" />
                     </div>
-
-                    <div class="col-md-3 form-check form-switch">
-                        <br>
-                        <label for="workInTzom" class="form-check-label"> עבודה בצומות</label>
-
-                     
-                        <input type="checkbox" role="switch" id="workInTzom" class="form-check-input"
-                            v-model="userData.info.workInTzom" />
-                            
+                    <div class="col-md-3">
+                        <p>אירועים</p>
+                        <div class="form-check form-switch">
+                            <label for="workInTzom" class="form-check-label"> עבודה בצומות</label>
+                            <input type="checkbox" role="switch" id="workInTzom" class="form-check-input"
+                                v-model="userData.info.workInTzom" />
+                        </div>
                     </div>
-                  
-
 
                     <!-- הזנת ימי עבודה בשבוע -->
 
-                    <div class="col-md-auto">
+                    <!-- <div class="col-md-auto">
                         <h3>ימי עבודה בשבוע</h3>
                         <div class="row justify-content-md-center">
                             <div class="col-md-auto">
@@ -105,7 +100,46 @@
                                 <label for="workDay7">מוצאי שבת</label>
                             </div>
                         </div>
-
+                    </div> -->
+                    <div class="col-md-auto">
+                        <h3>ימי עבודה בשבוע</h3>
+                        <ul class="list-days list-group list-group-horizontal">
+                            <li class="list-group-item "> 
+                                <label for="workDay1" class="form-check-label">יום ראשון</label>
+                                <input type="checkbox"  id="workDay1" name="workDays" value="sunday" checked
+                                    v-model="userData.workDays" />
+                            </li>
+                            <li class="list-group-item">
+                                <label for="workDay2">יום שני</label>
+                                <input type="checkbox" id="workDay2" name="workDays" value="monday"
+                                    v-model="userData.workDays" />
+                            </li>
+                            <li class="list-group-item">
+                                <label for="workDay3">יום שלישי</label>
+                                <input type="checkbox" id="workDay3" name="workDays" value="tuesday"
+                                    v-model="userData.workDays" />
+                            </li>
+                            <li class="list-group-item">
+                                <label for="workDay4">יום רביעי</label>
+                                <input type="checkbox" id="workDay4" name="workDays" value="wednesday"
+                                    v-model="userData.workDays" />
+                            </li>
+                            <li class="list-group-item">
+                                <label for="workDay5">יום חמישי</label>
+                                <input type="checkbox" id="workDay5" name="workDays" value="thursday"
+                                    v-model="userData.workDays" />
+                            </li>
+                            <li class="list-group-item">
+                                <label for="workDay6">יום שישי</label>
+                                <input type="checkbox" id="workDay6" name="workDays" value="friday"
+                                    v-model="userData.workDays" />
+                            </li>
+                            <li class="list-group-item">
+                                <label for="workDay7">מוצאי שבת</label>
+                                <input type="checkbox" id="workDay7" name="workDays" value="saturday"
+                                    v-model="userData.workDays" />
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </fieldset>
@@ -120,18 +154,21 @@
     <!-- מסך התוצאה -->
     <div v-show="showScreen3">
         <h1>פרויקט {{ userData.book }}</h1>
-        <h1>תאריך ההגשה הוא {{ calculatData.DeadLinStr }}</h1>
-        <h3>נתרו לך {{ calculatData.totalWorkDay }} ימי עבודה</h3>
-        <h3>אתה צריך לכתוב {{ calculatData.pagePerDay.toFixed(1) }} דפים ליום</h3>
-        <h3>הרווח המשוער הוא {{ calculatData.profitPerDay.toFixed(1) }} שקלים ליום</h3>
-        <!-- <h3>אתה צריך לכתוב {{ calculatData.writePagePerHour.toFixed(1) }} דפים לשעה</h3> -->
-        <!-- <ul>
-            <li v-bind:ref_for="calculatData.holidayList in calculatData.holidayList"> {{ calculatData.holidayList }}</li>
-        </ul> -->
-        <ul v-bind:ref_for="calculatData.holidayList in calculatData.holidayList">
-            {{ calculatData.holidayList }}
-        </ul>
-        <button @click="startCalculator">חישוב חדש</button>
+        <h1>תאריך ההגשה הוא <br> <b>{{ calculatData.DeadLinStr }}</b> </h1>
+        <h3>נתרו לך <b>{{ calculatData.totalWorkDay }}</b> ימי עבודה</h3>
+        <h3>אתה צריך לכתוב <b>{{ calculatData.pageSpeedPerOneDay }}</b> דפים ליום</h3>
+        <h3>הרווח המשוער הוא <b>{{ calculatData.profitPerDay.toFixed(1) }}</b> שקלים ליום</h3>
+        <h3>בהתחשב בקצב כתיבה של <b>{{ userData.info.speedSelct }}</b> דפים לשעה</h3>
+        <details>
+            <ul class="list-group">
+                <li class="list-group-item" v-for="(item, i) in calculatData.holidayList" :key="i">
+                    {{ item }}
+                </li>
+            </ul>
+            <summary><b>להצגת רשימת החגים שחלים בתטווח התאריך</b></summary>
+        </details>
+
+        <button @click="backToCalc">חזרה למחשבון</button>
         <button @click="startCalculator">חישוב חדש</button>
     </div>
 </template>
@@ -141,7 +178,6 @@ import DotLoader from "./DotLoader.vue";
 export default {
     components: {
         DotLoader: DotLoader,
-
     },
     defineProps: {
         funcBack: Function
@@ -186,6 +222,7 @@ export default {
                 holidayIn: 0,
                 IdArry: 0,
                 DeadLinStr: "",
+                holidayListLi: "",
             },
         };
     },
@@ -193,6 +230,11 @@ export default {
         // איפוס המחשבון
         startCalculator() {
             location.reload()
+        },
+        //חזרה למחשבון
+        backToCalc(){
+            this.showScreen2 = !this.showScreen2;
+            this.showScreen3 = !this.showScreen3;
         },
         //מעבר לביצוע פעולות החישוב
         submitScreen2() {
@@ -210,10 +252,12 @@ export default {
             this.calSumPages() // חישוב כמות העמודים בפרויקט 
             this.calWeekWork() // חישוב שבועות העבודה
             this.calDayWork() // חישוב ימי העבודה
+            this.tzom() //פונקציה לבדיקה עבודה בצומות
             this.calEndDate() //חישוב תאריך הגשה לפני פילטור חגים
             this.dayCalc() //הכנסת טווח ימי העבודה למערך
             let JewishCalData = await this.habcal() //קריאה לקבלת נתוני חגים
             this.holidayToList(JewishCalData) //דחיפת נתוני החגים למערך
+            this.holidayList() //הכנסת רשימת החגים למערך
             this.dayWork() //דחיפת ימי העבודה בשבוע למערך
             this.findHoliday() //מציאת חגים בטווח התאריכים
             await this.updateWorkDay()
@@ -221,7 +265,6 @@ export default {
         },
         pageSpeedPerOneDay() {
             this.calculatData.pageSpeedPerOneDay = (this.userData.info.speedSelct * this.userData.info.workHoursSelct)
-            console.log(`מהירות כתיבה ${this.calculatData.pageSpeedPerOneDay}`);
         },
         pageSpeedPerOneWeek() {
             const workingDay = (this.userData.workDays.length)
@@ -248,7 +291,11 @@ export default {
         },
 
         /// התחלת פילטור ימי חג
-
+        tzom() {
+            if (this.saveData[0].info.workInTzom == false) {
+                this.calculatData.tzom = "mf=on&"
+            }
+        },
         dayCalc() {
             const today = new Date();
             const dateUser = new Date(this.calculatData.EndDateTemp);
@@ -291,7 +338,15 @@ export default {
                 RangeOfDates[array[i].date].holidayName = array[i].hebrew;
             }
         },
-
+        holidayList(){
+            let array = this.calculatData.RangeOfDates
+            for (let i = 0; i < array.length; i++) {
+                if (array[i].holiday == true) {
+                    this.calculatData.holidayListLi += (array[i].holidayName)
+                }
+  
+            }
+        },
         dayWork() {
             let today = new Date();
             let dateUser = new Date(this.calculatData.EndDateTemp);
@@ -402,5 +457,17 @@ export default {
 }
 
 </script>
+<style>
+@media screen and (max-width: 1110px) {
+    .list-days{
+          display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+}
+}
+
+
+</style>
 
 

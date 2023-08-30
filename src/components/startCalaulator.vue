@@ -21,7 +21,7 @@
     <CalDate @click-back="funcBack" />
   </div>
   <div v-show="showPagesCalculator">
-    <pagesCalc />
+    <pagesCalc @click-back="funcBack" />
   </div>
 </template>
 

@@ -1,19 +1,25 @@
 <template>
-  <div class=".container-xl ">
+  <div class="container">
     <div id="heder" class="row">
       <MainHeder />
     </div>
     <section class="row">
-      <div class="col">
+      <div class="col-3 d-none d-xl-flex flex-column">
         <rightAds />
       </div>
-      <div id="containerCalculatur" class="col-6">
+      <div id="containerCalculatur" class="col-xl-6">
         <StartCalculator />
       </div>
-      <div class="col">
+      <div class="col-3 d-none d-xl-flex flex-column ">
         <leftAds />
       </div>
     </section>
+    <section class="row">
+      <div class="col-12">
+        <HelloWorld />
+      </div>
+    </section>
+    
   </div>
 </template>
 
@@ -22,6 +28,7 @@ import MainHeder from "./components/MainHeder.vue";
 import StartCalculator from "./components/startCalaulator.vue";
 import rightAds from "./components/rightAds.vue";
 import leftAds from "./components/leftAds.vue";
+import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
   name: "App",
@@ -29,7 +36,8 @@ export default {
     MainHeder: MainHeder,
     StartCalculator: StartCalculator,
     rightAds: rightAds,
-    leftAds: leftAds
+    leftAds: leftAds,
+    HelloWorld: HelloWorld
   },
   methods: {
 
@@ -51,11 +59,18 @@ export default {
 }
 
 #app #containerCalculatur {
-    margin: 0 10%;
-    padding: 10px;
     background-color: #f0f0f0;
     border-radius: 10px;
     box-shadow: 0 0 10px #000;
+  }
+  @media (max-width: 1000px) {
+    #app .adds {
+      display: none;
+    }
+
+    #app #heder {
+      display: block;
+    }
   }
 
   #app section {
