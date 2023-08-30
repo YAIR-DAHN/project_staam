@@ -153,8 +153,8 @@
     </div>
     <!-- מסך התוצאה -->
     <div v-show="showScreen3">
-        <h1>פרויקט {{ userData.book }}</h1>
-        <h1>תאריך ההגשה הוא <br> <b>{{ calculatData.DeadLinStr }}</b> </h1>
+        <h1><b>פרויקט {{ userData.book }}</b></h1>
+        <h1>תאריך ההגשה המשוער הוא <br> <b>{{ calculatData.DeadLinStr }}</b> </h1>
         <h3>נתרו לך <b>{{ calculatData.totalWorkDay }}</b> ימי עבודה</h3>
         <h3>אתה צריך לכתוב <b>{{ calculatData.pageSpeedPerOneDay }}</b> דפים ליום</h3>
         <h3>הרווח המשוער הוא <b>{{ calculatData.profitPerDay.toFixed(1) }}</b> שקלים ליום</h3>

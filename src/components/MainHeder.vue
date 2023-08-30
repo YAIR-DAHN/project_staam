@@ -8,6 +8,7 @@
         <button class="nav-button">מחשבון</button>
         <button class="nav-button">אודות</button>
         <button class="nav-button">צור קשר</button>
+        
       </div>
     </div>
   </template>
@@ -17,6 +18,14 @@
     // props: {
     //   msg: String,
     // },
+    data() {
+      return {
+     
+      };
+    },
+    methods: {
+      
+    },
   };
   </script>
   
@@ -44,6 +53,7 @@
     border: none;
     margin: 0 10px;
     cursor: pointer;
+    color: #000;
   }
   
   .nav-button:hover {

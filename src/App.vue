@@ -14,11 +14,11 @@
         <leftAds />
       </div>
     </section>
-    <section class="row">
+    <!-- <section class="row">
       <div class="col-12">
         <HelloWorld />
       </div>
-    </section>
+    </section> -->
     
   </div>
 </template>
@@ -28,7 +28,7 @@ import MainHeder from "./components/MainHeder.vue";
 import StartCalculator from "./components/startCalaulator.vue";
 import rightAds from "./components/rightAds.vue";
 import leftAds from "./components/leftAds.vue";
-import HelloWorld from "./components/HelloWorld.vue";
+// import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
   name: "App",
@@ -37,7 +37,7 @@ export default {
     StartCalculator: StartCalculator,
     rightAds: rightAds,
     leftAds: leftAds,
-    HelloWorld: HelloWorld
+    // HelloWorld: HelloWorld
   },
   methods: {
 
@@ -48,8 +48,11 @@ export default {
 
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@100;200;300;400;500;600;700;800;900&display=swap');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Serif Hebrew', serif;
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
