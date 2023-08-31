@@ -59,54 +59,12 @@
                     </div>
 
                     <!-- הזנת ימי עבודה בשבוע -->
-
-                    <!-- <div class="col-md-auto">
-                        <h3>ימי עבודה בשבוע</h3>
-                        <div class="row justify-content-md-center">
-                            <div class="col-md-auto">
-                                <input type="checkbox" id="workDay1" name="workDays" value="sunday" checked
-                                    v-model="userData.workDays" />
-                                <label for="workDay1">יום ראשון</label>
-                            </div>
-                            <div class="col-md-auto">
-                                <input type="checkbox" id="workDay2" name="workDays" value="monday"
-                                    v-model="userData.workDays" />
-                                <label for="workDay2">יום שני</label>
-
-                            </div>
-                            <div class="col-md-auto">
-                                <input type="checkbox" id="workDay3" name="workDays" value="tuesday"
-                                    v-model="userData.workDays" />
-                                <label for="workDay3">יום שלישי</label>
-                            </div>
-                            <div class="col-md-auto">
-                                <input type="checkbox" id="workDay4" name="workDays" value="wednesday"
-                                    v-model="userData.workDays" />
-                                <label for="workDay4">יום רביעי</label>
-                            </div>
-                            <div class="col-md-auto">
-                                <input type="checkbox" id="workDay5" name="workDays" value="thursday"
-                                    v-model="userData.workDays" />
-                                <label for="workDay5">יום חמישי</label>
-                            </div>
-                            <div class="col-md-auto">
-                                <input type="checkbox" id="workDay6" name="workDays" value="friday"
-                                    v-model="userData.workDays" />
-                                <label for="workDay6">יום שישי</label>
-                            </div>
-                            <div class="col-md-auto">
-                                <input type="checkbox" id="workDay7" name="workDays" value="saturday"
-                                    v-model="userData.workDays" />
-                                <label for="workDay7">מוצאי שבת</label>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="col-md-auto">
                         <h3>ימי עבודה בשבוע</h3>
                         <ul class="list-days list-group list-group-horizontal">
-                            <li class="list-group-item "> 
+                            <li class="list-group-item ">
                                 <label for="workDay1" class="form-check-label">יום ראשון</label>
-                                <input type="checkbox"  id="workDay1" name="workDays" value="sunday" checked
+                                <input type="checkbox" id="workDay1" name="workDays" value="sunday" checked
                                     v-model="userData.workDays" />
                             </li>
                             <li class="list-group-item">
@@ -147,10 +105,12 @@
         <button @click="$emit('clickBack')">חזור לשלב קודם</button>
         <button @click="submitScreen2">סיים וחשב</button>
     </div>
+
     <!-- מסך טעינה -->
     <div v-show="loader">
         <DotLoader />
     </div>
+
     <!-- מסך התוצאה -->
     <div v-show="showScreen3">
         <h1><b>פרויקט {{ userData.book }}</b></h1>
@@ -165,9 +125,8 @@
                     {{ item }}
                 </li>
             </ul>
-            <summary><b>להצגת רשימת החגים שחלים בתטווח התאריך</b></summary>
+            <summary><b>להצגת רשימת החגים שחלים בטווח התאריך</b></summary>
         </details>
-
         <button @click="backToCalc">חזרה למחשבון</button>
         <button @click="startCalculator">חישוב חדש</button>
     </div>
@@ -232,7 +191,7 @@ export default {
             location.reload()
         },
         //חזרה למחשבון
-        backToCalc(){
+        backToCalc() {
             this.showScreen2 = !this.showScreen2;
             this.showScreen3 = !this.showScreen3;
         },
@@ -269,15 +228,12 @@ export default {
         pageSpeedPerOneWeek() {
             const workingDay = (this.userData.workDays.length)
             this.calculatData.pageSpeedPerOneWeek = (this.calculatData.pageSpeedPerOneDay * workingDay)
-            console.log(`דפים לשבוע ${this.calculatData.pageSpeedPerOneWeek}`);
         },
         calSumPages() {
             this.calculatData.SumPages = (this.userData.info.pagesSelct * this.userData.info.AmountSelct)
-            console.log(`כמות הדפים בפרויקט ${this.calculatData.SumPages}`);
         },
         calWeekWork() {
             this.calculatData.WeekWork = (this.calculatData.SumPages / this.calculatData.pageSpeedPerOneWeek)
-            console.log(`שבועות עבודה ${this.calculatData.WeekWork}`);
         },
         calDayWork() {
             this.calculatData.dayWork = (this.calculatData.WeekWork * 7)
@@ -287,7 +243,6 @@ export default {
             const date = new Date();
             date.setMinutes(date.getMinutes() + minWork);
             this.calculatData.EndDateTemp = date
-            console.log(`תאריך הגשה ${date}`); // Date object representing the estimated submission date
         },
 
         /// התחלת פילטור ימי חג
@@ -299,13 +254,9 @@ export default {
         dayCalc() {
             const today = new Date();
             const dateUser = new Date(this.calculatData.EndDateTemp);
-            console.log(` התחלה הוא ${today}`);
-            console.log(` ההגשה הוא ${dateUser}`);
             //הכנסת טווח התאריכים למערך
             let ustart = today.getTime();
             let uend = dateUser.getTime();
-            console.log(`התאריך ההגשה הוא ${uend}`);
-            console.log(`התאריך התחלה  הוא ${ustart}`);
             while (ustart <= uend) {
                 let thisDay = new Date(ustart);
                 ustart += 86400000
@@ -331,20 +282,17 @@ export default {
             let RangeOfDates = this.calculatData.RangeOfDates;
             let array = JewishCalData.items;
             for (let i = 0; i < array.length - 1; i++) {
-                console.log(` ערך האי ${i}`);
-                console.log(` התאריך הוא ${array}`);
-                console.log(`ערך הלנט הוא  ${array.length}`);
                 RangeOfDates[array[i].date].holiday = true;
                 RangeOfDates[array[i].date].holidayName = array[i].hebrew;
             }
         },
-        holidayList(){
+        holidayList() {
             let array = this.calculatData.RangeOfDates
             for (let i = 0; i < array.length; i++) {
                 if (array[i].holiday == true) {
                     this.calculatData.holidayListLi += (array[i].holidayName)
                 }
-  
+
             }
         },
         dayWork() {
@@ -369,14 +317,10 @@ export default {
             let ChengeToArry = Object.keys(RangeOfDates)
             this.calculatData.holidayIn = 0 //איפוס מונה החגים
             for (let i = IdArry; i < ChengeToArry.length; i++) {
-                console.log(`נתוני התנאי הם i = ${i} והמערך הוא ${ChengeToArry[i]}`);
                 if (RangeOfDates[ChengeToArry[i]].holiday == true && RangeOfDates[ChengeToArry[i]].workDay == true) {
                     this.calculatData.holidayIn++
-                    console.log("נמצא חג");
                 }
-                else {
-                    console.log("בפילטר לא נמצא חג");
-                }
+
             }
         },
 
@@ -393,16 +337,9 @@ export default {
                 let IdArry = (ChengeToArry.length) //עדכון מספר האינדקס במערך למניעת ספירה חוזרת של חגים
                 this.findHoliday(IdArry) //קריאה חוזרת לבדיקה האם יש חגים
                 let holidayIn = this.calculatData.holidayIn
-                console.log("jnnjnjnjjn");
-                console.log(`הפונקציה נקראה בחזרה, ערך החגים הוא ${holidayIn} ערך האינדקס הוא ${IdArry} `);
                 if (holidayIn > 0) {
                     this.updateWorkDay()
                 }
-
-            }
-
-            else {
-                console.log("לא נמצאו עוד חגים");
             }
             this.filterWorkDay() //הפעלת פונקציה לחישוב סופי של ימי עבודה
             this.profitPerDay() //חישוב רווח משוער ליום עבודה
@@ -459,15 +396,13 @@ export default {
 </script>
 <style>
 @media screen and (max-width: 1110px) {
-    .list-days{
-          display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
+    .list-days {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
-}
-
-
 </style>
 
 

@@ -48,96 +48,49 @@
             <label for="date"> תאריך הגשה </label>
             <input type="date" id="date" required v-model="userData.info.dateSelct" />
           </div>
-          <!-- <div class="col-md-3">
-            <h3>אירועים</h3>
-            <label for="workInTzom"> עבודה בצומות</label>
-            <input type="checkbox" id="workInTzom" v-model="userData.info.workInTzom" />
-          </div> -->
           <div class="col-md-3">
-                        <p>אירועים</p>
-                        <div class="form-check form-switch">
-                            <label for="workInTzom" class="form-check-label"> עבודה בצומות</label>
-                            <input type="checkbox" role="switch" id="workInTzom" class="form-check-input"
-                                v-model="userData.info.workInTzom" />
-                        </div>
-                    </div>
+            <p>אירועים</p>
+            <div class="form-check form-switch">
+              <label for="workInTzom" class="form-check-label"> עבודה בצומות</label>
+              <input type="checkbox" role="switch" id="workInTzom" class="form-check-input"
+                v-model="userData.info.workInTzom" />
+            </div>
+          </div>
 
           <!-- הזנת ימי עבודה בשבוע -->
-
-          <!-- <div class="col-md-auto">
-            <h3>ימי עבודה בשבוע</h3>
-            <div class="row justify-content-md-center">
-              <div class="col-md-auto">
-                <input type="checkbox" id="workDay1" name="workDays" value="sunday" v-model="userData.workDays" />
-                <label for="workDay1">יום ראשון</label>
-              </div>
-              <div class="col-md-auto">
-                <input type="checkbox" id="workDay2" name="workDays" value="monday" v-model="userData.workDays" />
-                <label for="workDay2">יום שני</label>
-              </div>
-              <div class="col-md-auto">
-                <input type="checkbox" id="workDay3" name="workDays" value="tuesday" v-model="userData.workDays" />
-                <label for="workDay3">יום שלישי</label>
-              </div>
-              <div class="col-md-auto">
-                <input type="checkbox" id="workDay4" name="workDays" value="wednesday" v-model="userData.workDays" />
-                <label for="workDay4">יום רביעי</label>
-              </div>
-              <div class="col-md-auto">
-                <input type="checkbox" id="workDay5" name="workDays" value="thursday" v-model="userData.workDays" />
-                <label for="workDay5">יום חמישי</label>
-              </div>
-              <div class="col-md-auto">
-                <input type="checkbox" id="workDay6" name="workDays" value="friday" v-model="userData.workDays" />
-                <label for="workDay6">יום שישי</label>
-              </div>
-              <div class="col-md-auto">
-                <input type="checkbox" id="workDay7" name="workDays" value="saturday" v-model="userData.workDays" />
-                <label for="workDay7">מוצאי שבת</label>
-              </div>
-            </div>
-
-          </div> -->
           <div class="col-md-auto">
-                        <h3>ימי עבודה בשבוע</h3>
-                        <ul class="list-days list-group list-group-horizontal">
-                            <li class="list-group-item "> 
-                                <label for="workDay1" class="form-check-label">יום ראשון</label>
-                                <input type="checkbox"  id="workDay1" name="workDays" value="sunday" checked
-                                    v-model="userData.workDays" />
-                            </li>
-                            <li class="list-group-item">
-                                <label for="workDay2">יום שני</label>
-                                <input type="checkbox" id="workDay2" name="workDays" value="monday"
-                                    v-model="userData.workDays" />
-                            </li>
-                            <li class="list-group-item">
-                                <label for="workDay3">יום שלישי</label>
-                                <input type="checkbox" id="workDay3" name="workDays" value="tuesday"
-                                    v-model="userData.workDays" />
-                            </li>
-                            <li class="list-group-item">
-                                <label for="workDay4">יום רביעי</label>
-                                <input type="checkbox" id="workDay4" name="workDays" value="wednesday"
-                                    v-model="userData.workDays" />
-                            </li>
-                            <li class="list-group-item">
-                                <label for="workDay5">יום חמישי</label>
-                                <input type="checkbox" id="workDay5" name="workDays" value="thursday"
-                                    v-model="userData.workDays" />
-                            </li>
-                            <li class="list-group-item">
-                                <label for="workDay6">יום שישי</label>
-                                <input type="checkbox" id="workDay6" name="workDays" value="friday"
-                                    v-model="userData.workDays" />
-                            </li>
-                            <li class="list-group-item">
-                                <label for="workDay7">מוצאי שבת</label>
-                                <input type="checkbox" id="workDay7" name="workDays" value="saturday"
-                                    v-model="userData.workDays" />
-                            </li>
-                        </ul>
-                    </div>
+            <h3>ימי עבודה בשבוע</h3>
+            <ul class="list-days list-group list-group-horizontal">
+              <li class="list-group-item ">
+                <label for="workDay1" class="form-check-label">יום ראשון</label>
+                <input type="checkbox" id="workDay1" name="workDays" value="sunday" checked v-model="userData.workDays" />
+              </li>
+              <li class="list-group-item">
+                <label for="workDay2">יום שני</label>
+                <input type="checkbox" id="workDay2" name="workDays" value="monday" v-model="userData.workDays" />
+              </li>
+              <li class="list-group-item">
+                <label for="workDay3">יום שלישי</label>
+                <input type="checkbox" id="workDay3" name="workDays" value="tuesday" v-model="userData.workDays" />
+              </li>
+              <li class="list-group-item">
+                <label for="workDay4">יום רביעי</label>
+                <input type="checkbox" id="workDay4" name="workDays" value="wednesday" v-model="userData.workDays" />
+              </li>
+              <li class="list-group-item">
+                <label for="workDay5">יום חמישי</label>
+                <input type="checkbox" id="workDay5" name="workDays" value="thursday" v-model="userData.workDays" />
+              </li>
+              <li class="list-group-item">
+                <label for="workDay6">יום שישי</label>
+                <input type="checkbox" id="workDay6" name="workDays" value="friday" v-model="userData.workDays" />
+              </li>
+              <li class="list-group-item">
+                <label for="workDay7">מוצאי שבת</label>
+                <input type="checkbox" id="workDay7" name="workDays" value="saturday" v-model="userData.workDays" />
+              </li>
+            </ul>
+          </div>
         </div>
       </fieldset>
     </form>
@@ -162,17 +115,14 @@
     <h3>אתה צריך לכתוב <b>{{ calculatData.pagePerDay.toFixed(1) }}</b> דפים ליום</h3>
     <h3>הרווח המשוער הוא <b>{{ calculatData.profitPerDay.toFixed(1) }}</b> שקלים ליום</h3>
     <h3>אתה צריך לכתוב <b>{{ calculatData.writePagePerHour.toFixed(1) }}</b> דפים לשעה</h3>
-    <!-- <ul>
-      <li v-bind:ref_for="calculatData.holidayList in calculatData.holidayList"> {{ calculatData.holidayList }}</li>
-    </ul> -->
     <details>
-            <ul class="list-group">
-                <li class="list-group-item" v-for="(item, i) in calculatData.holidayList" :key="i">
-                    {{ item }}
-                </li>
-            </ul>
-            <summary> <b> להצגת רשימת החגים שחלים בתטווח התאריך </b> </summary>
-        </details>
+      <ul class="list-group">
+        <li class="list-group-item" v-for="(item, i) in calculatData.holidayList" :key="i">
+          {{ item }}
+        </li>
+      </ul>
+      <summary> <b> להצגת רשימת החגים שחלים בטווח התאריך </b> </summary>
+    </details>
 
     <button @click="backToCalc">חזרה למחשבון</button>
     <button @click="startCalculator">חישוב חדש</button>
@@ -189,8 +139,8 @@ export default {
     StartCalaulator: StartCalaulator,
   },
   defineProps: {
-        funcBack: Function
-    },
+    funcBack: Function
+  },
   data() {
     return {
       //הגדרת תצוגת מסכים
@@ -238,11 +188,11 @@ export default {
       this.saveData.push({ ...this.userData });
       this.powerFunc()
     },
-     //חזרה למחשבון
-     backToCalc(){
-            this.showScreen2 = !this.showScreen2;
-            this.showScreen3 = !this.showScreen3;
-        },
+    //חזרה למחשבון
+    backToCalc() {
+      this.showScreen2 = !this.showScreen2;
+      this.showScreen3 = !this.showScreen3;
+    },
     //קריאה לפונקציות הנדרשות
     async powerFunc() {
       this.tzom() //פונקציה לבדיקה עבודה בצומות
@@ -298,9 +248,7 @@ export default {
     holidayToList(JewishCalData) {
       let RangeOfDates = this.calculatData.RangeOfDates;
       let array = JewishCalData.items;
-      console.log(RangeOfDates);
       for (let i = 0; i < array.length; i++) {
-        console.log(RangeOfDates[array[i].date]);
         RangeOfDates[array[i].date].holiday = true;
         RangeOfDates[array[i].date].holidayName = array[i].hebrew;
       }
@@ -329,10 +277,6 @@ export default {
     filterWorkDay() {
       let RangeOfDates = this.calculatData.RangeOfDates
       let ChengeToArry = Object.keys(RangeOfDates)
-
-      console.log(ChengeToArry);
-      console.log(ChengeToArry.length);
-
       for (let i = 0; i < ChengeToArry.length; i++) {
         if (RangeOfDates[ChengeToArry[i]].workDay == true && RangeOfDates[ChengeToArry[i]].holiday == false) {
           this.calculatData.totalWorkDay++

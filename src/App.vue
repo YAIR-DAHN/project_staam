@@ -14,12 +14,6 @@
         <leftAds />
       </div>
     </section>
-    <!-- <section class="row">
-      <div class="col-12">
-        <HelloWorld />
-      </div>
-    </section> -->
-    
   </div>
 </template>
 
@@ -28,8 +22,6 @@ import MainHeder from "./components/MainHeder.vue";
 import StartCalculator from "./components/startCalaulator.vue";
 import rightAds from "./components/rightAds.vue";
 import leftAds from "./components/leftAds.vue";
-// import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
   name: "App",
   components: {
@@ -37,7 +29,6 @@ export default {
     StartCalculator: StartCalculator,
     rightAds: rightAds,
     leftAds: leftAds,
-    // HelloWorld: HelloWorld
   },
   methods: {
 
@@ -48,8 +39,8 @@ export default {
 
 
 <style>
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 #app {
   font-family: 'Noto Serif Hebrew', serif;
   /* font-family: Avenir, Helvetica, Arial, sans-serif; */
@@ -62,21 +53,22 @@ export default {
 }
 
 #app #containerCalculatur {
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #000;
-  }
-  @media (max-width: 1000px) {
-    #app .adds {
-      display: none;
-    }
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #000;
+}
 
-    #app #heder {
-      display: block;
-    }
+@media (max-width: 1000px) {
+  #app .adds {
+    display: none;
   }
 
-  #app section {
-    margin-top: 50px;
+  #app #heder {
+    display: block;
   }
+}
+
+#app section {
+  margin-top: 50px;
+}
 </style>
